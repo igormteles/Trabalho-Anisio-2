@@ -157,27 +157,22 @@ export class PaoService {
             let error: number = 0
             if(estoque){
                 let erro:string = "A quantidade pedida na vendo dos seguintes itens é maior que a em estoque:"
+                
                 if(estoque.quantidade < listaItens[i].quantidade){
                     erro += ` ${estoque.modalidadeID}`
                     error = 1
                 }
+                
                 if(error == 1){
                     throw new Error(erro)
                 }
-                    estoque.quantidade -= listaItens[i].quantidade
-                    this.padariaRepository.atualizarEstoque(estoque)
-                
+                estoque.quantidade -= listaItens[i].quantidade
+                this.padariaRepository.atualizarEstoque(estoque)
             }
-
-
-
             if(precoItem){
                 valorTotal *=  precoItem * listaItens[i].quantidade
             }
         }
-
-
-
         const novaVenda = new Venda(cpfCliente, valorTotal, listaItens)
         this.padariaRepository.criaVenda(novaVenda)
 
