@@ -8,7 +8,6 @@ export class Venda{
     id:number;
     cpfCliente: string;
     valorTotal: number = 0;
-
     
 
     constructor (cpfCliente: string, valorTotal:number, listaItens: Item[]){

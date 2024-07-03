@@ -37,8 +37,8 @@ export class PaoService {
 
 //FUNÇÃO PARA REMOVER UMA MODALIDADE POR ID
     deletaPao(novoPao: Pao) {
-        let pao = this.buscarPao(novoPao.id)
-        if(pao !== novoPao){
+        let pao: Pao | undefined = this.buscarPao(novoPao.id)
+        if(!pao){
             throw new Error("Produto não encontrado!!! Verifique as informações e tente novamente.")
         }
 
@@ -162,7 +162,10 @@ export class PaoService {
             let error: number = 0
             if(estoque){
                 let erro:string = "A quantidade pedida na vendo dos seguintes itens é maior que a em estoque:"
-                
+                let nomeItem: string | undefined = this.buscarPao(this.buscaItem(listaItens[i].estoqueID)?.modalidadeID)?.nome
+                if(nomeItem){
+                    listaItens[i].nome = nomeItem
+                }
                 if(estoque.quantidade < listaItens[i].quantidade){
                     erro += ` ${estoque.modalidadeID}`
                     error = 1

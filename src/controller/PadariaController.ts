@@ -78,7 +78,7 @@ export function deletaPao (req: Request, res: Response){
 
 export function buscaPao (req: Request, res: Response){ 
     try {
-        const pao = paoService.buscarPao(req.query.id);
+        const pao = paoService.buscarPao(req.params.id);
 
         if(pao){
             res.status(201).json(
@@ -190,7 +190,7 @@ export function adicionaEstoque (req: Request, res: Response){
 
 export function buscaItem (req: Request, res: Response){
     try{
-        const item = paoService.buscaItem(req.query.id)
+        const item = paoService.buscaItem(req.params.id)
         res.status(200).json(
             {
                 message: "Produto Encontrado: ", item
@@ -240,7 +240,7 @@ export function criaVenda (req: Request, res: Response){
 */ 
 export function recuperaVendaPorId (req: Request, res: Response){
     try {
-        const venda = paoService.recuperaVendaPorId(req.query.id);
+        const venda = paoService.recuperaVendaPorId(req.params.id);
 
         if(venda){
             res.status(201).json(
