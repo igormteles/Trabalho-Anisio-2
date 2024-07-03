@@ -14,12 +14,12 @@ padaria.get("/api/modalidade/todas", listaPao);
 padaria.post("/api/modalidade", cadastraPao);
 padaria.put("/api/modalidade", alteraPao);
 padaria.delete("/api/modalidade", deletaPao);
-padaria.get("/api/modalidade", buscaPao);
+padaria.get("/api/modalidade/:id", buscaPao);
 
 //estoque
 padaria.post("/api/estoque", adicionaItem);
 padaria.get("/api/estoque/todos", listarEstoque);
-padaria.get("/api/estoque", buscaItem);
+padaria.get("/api/estoque/:id", buscaItem);
 padaria.put("/api/estoque", adicionaEstoque);
 padaria.delete("/api/estoque", deletaEstoque);
 

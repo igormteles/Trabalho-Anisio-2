@@ -239,15 +239,20 @@ export function criaVenda (req: Request, res: Response){
 ======================== BUSCA VENDA POR ID  ======================
 */ 
 export function recuperaVendaPorId (req: Request, res: Response){
-    try{
-        const id = Number(req.params.id);
-        const venda = paoService.recuperaVendaPorId(id);
+    try {
+        const venda = paoService.recuperaVendaPorId(req.query.id);
+
         if(venda){
-            res.status(200).json(venda);
-        }else {
-            res.status(404).json({message: "Venda nao encontrada"});
+            res.status(201).json(
+                {
+                    mensagem: "Venda encontrada!",
+                    modalidade: venda
+                }
+                );
+        }else{
+            res.status(404).json({mensagem: "Esta venda não foi encontrada, verifique o ID e tente novamente"})
         }
-    }catch (error){ 
-        res.status(500).json({message: "Erro ao encontar a venda com o id ", error});
+    } catch (error: any) {
+        res.status(400).json({message: error.message,});
     }
 }

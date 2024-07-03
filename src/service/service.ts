@@ -139,10 +139,15 @@ export class PaoService {
         return itemAlterado
     }
 
-   
-    recuperaVendaPorId(id:number): Venda| undefined{
-        return this.padariaRepository.recuperaVendaPorId(id);
+//FUNÇÃO QUE RECUPERA UMA VENDA POR ID
+
+    recuperaVendaPorId(id:any): Venda| undefined{
+        const vendaID: number = parseInt(id, 10)
+        console.log(id)
+        return this.padariaRepository.recuperaVendaPorId(vendaID);
     }
+
+//FUNÇÃO QUE CRIA UMA VENDA
 
     criaVenda(venda: Venda): Venda{
         let i:number = 0
