@@ -172,7 +172,11 @@ export class PaoService {
                 }
                 
                 if(error == 1){
+                    for(i=i-1; i>=0; i--){
+                        estoque.quantidade += listaItens[i].quantidade                  
+                    }
                     throw new Error(erro)
+                    
                 }
                 estoque.quantidade -= listaItens[i].quantidade
                 this.padariaRepository.atualizarEstoque(estoque)
